@@ -1,0 +1,13 @@
+[package]
+name = "zed_postgres_model_context"
+version = "0.0.1"
+edition = "2021"
+publish = false
+license = "Apache-2.0"
+
+[lib]
+path = "src/postgres_model_context.rs"
+crate-type = ["cdylib"]
+
+[dependencies]
+zed_extension_api = { path = "../zed/crates/extension_api" }

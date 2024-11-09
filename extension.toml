@@ -1,0 +1,11 @@
+id = "postgres-model-context"
+name = "Postgres Model Context"
+description = "Model Context Server for PostgreSQL"
+version = "0.0.1"
+schema_version = 1
+authors = ["Max Brunsfeld <max@zed.dev>"]
+repository = "https://github.com/zed-extensions/postgres-context-server"
+include = ["postgres-context-server.tgz"]
+
+[context_servers.postgres-context-server]
+name = "Postgres Context Server"
