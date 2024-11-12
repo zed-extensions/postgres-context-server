@@ -10,4 +10,5 @@ path = "src/postgres_model_context.rs"
 crate-type = ["cdylib"]
 
 [dependencies]
+serde = "1.0"
 zed_extension_api = { path = "../zed/crates/extension_api" }

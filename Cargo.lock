@@ -323,5 +323,6 @@ dependencies = [
 name = "zed_postgres_model_context"
 version = "0.0.1"
 dependencies = [
+ "serde",
  "zed_extension_api",
 ]
