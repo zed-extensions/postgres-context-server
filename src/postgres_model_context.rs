@@ -4,7 +4,7 @@ use zed::settings::ContextServerSettings;
 use zed_extension_api::{self as zed, serde_json, Command, ContextServerId, Project, Result};
 
 const PACKAGE_NAME: &str = "@zeddotdev/postgres-context-server";
-const PACKAGE_VERSION: &str = "0.1.0";
+const PACKAGE_VERSION: &str = "0.1.2";
 const SERVER_PATH: &str = "node_modules/@zeddotdev/postgres-context-server/index.mjs";
 
 struct PostgresModelContextExtension;
@@ -44,9 +44,10 @@ impl zed::Extension for PostgresModelContextExtension {
                     .join(SERVER_PATH)
                     .to_string_lossy()
                     .to_string(),
-                settings.database_url,
             ],
-            env: Vec::new(),
+            env: vec![
+                ("DATABASE_URL".into(), settings.database_url)
+            ],
         })
     }
 }
