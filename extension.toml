@@ -1,5 +1,5 @@
-id = "postgres-model-context"
-name = "Postgres Model Context"
+id = "postgres-context-server"
+name = "Postgres Context Server"
 description = "Model Context Server for PostgreSQL"
 version = "0.0.1"
 schema_version = 1
