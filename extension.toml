@@ -7,4 +7,3 @@ authors = ["Max Brunsfeld <max@zed.dev>"]
 repository = "https://github.com/zed-extensions/postgres-context-server"
 
 [context_servers.postgres-context-server]
-name = "Postgres Context Server"
