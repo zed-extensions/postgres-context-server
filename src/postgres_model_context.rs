@@ -37,17 +37,13 @@ impl zed::Extension for PostgresModelContextExtension {
             serde_json::from_value(settings).map_err(|e| e.to_string())?;
 
         Ok(Command {
-            command: "node".to_string(),
-            args: vec![
-                env::current_dir()
-                    .unwrap()
-                    .join(SERVER_PATH)
-                    .to_string_lossy()
-                    .to_string(),
-            ],
-            env: vec![
-                ("DATABASE_URL".into(), settings.database_url)
-            ],
+            command: zed::node_binary_path()?,
+            args: vec![env::current_dir()
+                .unwrap()
+                .join(SERVER_PATH)
+                .to_string_lossy()
+                .to_string()],
+            env: vec![("DATABASE_URL".into(), settings.database_url)],
         })
     }
 }
