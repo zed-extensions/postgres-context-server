@@ -4,7 +4,6 @@ use zed::settings::ContextServerSettings;
 use zed_extension_api::{self as zed, serde_json, Command, ContextServerId, Project, Result};
 
 const PACKAGE_NAME: &str = "@zeddotdev/postgres-context-server";
-const PACKAGE_VERSION: &str = "0.1.2";
 const SERVER_PATH: &str = "node_modules/@zeddotdev/postgres-context-server/index.mjs";
 
 struct PostgresModelContextExtension;
@@ -24,9 +23,10 @@ impl zed::Extension for PostgresModelContextExtension {
         _context_server_id: &ContextServerId,
         project: &Project,
     ) -> Result<Command> {
+        let latest_version = zed::npm_package_latest_version(PACKAGE_NAME)?;
         let version = zed::npm_package_installed_version(PACKAGE_NAME)?;
-        if version.as_deref() != Some(PACKAGE_VERSION) {
-            zed::npm_install_package(PACKAGE_NAME, PACKAGE_VERSION)?;
+        if version.as_deref() != Some(latest_version.as_ref()) {
+            zed::npm_install_package(PACKAGE_NAME, &latest_version)?;
         }
 
         let settings = ContextServerSettings::for_project("postgres-context-server", project)?;
