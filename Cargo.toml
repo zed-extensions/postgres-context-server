@@ -12,4 +12,4 @@ crate-type = ["cdylib"]
 [dependencies]
 serde = "1.0"
 schemars = "0.8"
-zed_extension_api = { path = "../zed/crates/extension_api" }
+zed_extension_api = "0.5.0"

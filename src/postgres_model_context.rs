@@ -55,15 +55,15 @@ impl zed::Extension for PostgresModelContextExtension {
         _context_server_id: &ContextServerId,
         _project: &Project,
     ) -> Result<Option<ContextServerConfiguration>> {
-        let installation_instructions = include_str!("../assets/installation_instructions.md");
-        let default_settings = include_str!("../assets/default_settings.jsonc").to_string();
-
+        let installation_instructions =
+            include_str!("../configuration/installation_instructions.md").to_string();
+        let default_settings = include_str!("../configuration/default_settings.jsonc").to_string();
         let settings_schema =
             serde_json::to_string(&schemars::schema_for!(PostgresContextServerSettings))
                 .map_err(|e| e.to_string())?;
 
         Ok(Some(ContextServerConfiguration {
-            installation_instructions: installation_instructions.to_string(),
+            installation_instructions,
             default_settings,
             settings_schema,
         }))
