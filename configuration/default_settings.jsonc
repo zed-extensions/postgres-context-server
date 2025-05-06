@@ -1,0 +1,4 @@
+{
+  /// Database URL for the Postgres database
+  "database_url": "postgresql://myuser:mypassword@localhost:5432/mydatabase"
+}
